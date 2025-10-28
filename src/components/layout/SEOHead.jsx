@@ -5,13 +5,14 @@ import { useTheme } from '../../context/ThemeContext';
 export default function SEOHead({ 
   title = "Maestro Arturo - Guía Espiritual",
   description = "Descubre el camino hacia la paz interior y el crecimiento espiritual con el Maestro Arturo. Servicios de guía espiritual, consultas personalizadas y sanación energética.",
-  image = "/images/og-image.jpg",
-  url = typeof globalThis !== 'undefined' && globalThis.location ? globalThis.location.href : '',
+  image = "/images/maestro-arturo.jpg",
+  url = typeof globalThis !== 'undefined' && globalThis.location ? globalThis.location.href : 'https://maestro-arturo.vercel.app',
 }) {
   const { theme } = useTheme();
 
   useEffect(() => {
-    // Actualizar meta tags (crear si no existen)
+    // Establecer idioma y actualizar meta tags (crear si no existen)
+    try { document.documentElement.lang = 'es-MX'; } catch (e) {}
     document.title = title;
 
     const upsertMeta = ({ name, property, content }) => {
@@ -37,6 +38,52 @@ export default function SEOHead({
     upsertMeta({ property: 'og:image', content: image });
     upsertMeta({ property: 'og:url', content: url });
     upsertMeta({ name: 'theme-color', content: theme === 'dark' ? '#121212' : '#ffffff' });
+    upsertMeta({ name: 'twitter:card', content: 'summary_large_image' });
+    upsertMeta({ name: 'twitter:title', content: title });
+    upsertMeta({ name: 'twitter:description', content: description });
+    upsertMeta({ name: 'twitter:image', content: image });
+    upsertMeta({ name: 'keywords', content: 'maestro, amarre, amarres, beneficios, guía espiritual, guia espiritual, desligamiento, limpiezas energéticas, ceremonias de prosperidad, protección espiritual' });
+
+  // Meta tags para geotargeting (priorizar México)
+  upsertMeta({ name: 'geo.region', content: 'MX' });
+  upsertMeta({ name: 'geo.placename', content: 'Mexico' });
+
+    // canonical link
+    try {
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', url.split('#')[0]);
+    } catch (e) {}
+
+    // JSON-LD structured data (Organization + WebSite)
+    try {
+      const jsonLdId = 'seo-json-ld';
+      let existing = document.getElementById(jsonLdId);
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Maestro Arturo",
+        "url": url.split('#')[0],
+        "logo": image,
+        "sameAs": [],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+573115033959",
+          "contactType": "customer service"
+        }]
+      };
+      if (!existing) {
+        existing = document.createElement('script');
+        existing.setAttribute('type', 'application/ld+json');
+        existing.setAttribute('id', jsonLdId);
+        document.head.appendChild(existing);
+      }
+      existing.text = JSON.stringify(jsonLd);
+    } catch (e) {}
   }, [title, description, image, url, theme]);
 
   return null;

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://maestro-arturo.vercel.app/sitemap.xml
+
+# If you want to block specific paths, add Disallow rules, e.g.
+# Disallow: /admin
