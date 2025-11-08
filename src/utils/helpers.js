@@ -22,3 +22,12 @@ export function truncateText(text, length = 100) {
   if (text.length <= length) return text;
   return text.slice(0, length).trim() + '...';
 }
+
+// Construye un enlace de WhatsApp con mensaje predefinido
+export function buildWhatsAppLink(message, phone = '525652467648') {
+  try {
+    return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  } catch {
+    return `https://wa.me/${phone}`;
+  }
+}

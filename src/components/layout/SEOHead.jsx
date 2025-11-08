@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function SEOHead({ 
-  title = "Maestro Arturo - Guía Espiritual",
-  description = "Descubre el camino hacia la paz interior y el crecimiento espiritual con el Maestro Arturo. Servicios de guía espiritual, consultas personalizadas y sanación energética.",
-  image = "/images/maestro-arturo.jpg",
-  url = typeof globalThis !== 'undefined' && globalThis.location ? globalThis.location.href : 'https://maestro-arturo.vercel.app',
+  title = "Maestro Valerio - Guía Espiritual",
+  description = "Descubre el camino hacia la paz interior y el crecimiento espiritual con el Maestro Valerio. Servicios de guía espiritual, consultas personalizadas y sanación energética.",
+  image = "/images/maestro-valerio.jpg",
+  url = typeof globalThis !== 'undefined' && globalThis.location ? globalThis.location.href : 'https://maestro-valerio.vercel.app',
 }) {
   const { theme } = useTheme();
 
@@ -66,13 +66,13 @@ export default function SEOHead({
       const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Maestro Arturo",
+        "name": "Maestro Valerio",
         "url": url.split('#')[0],
         "logo": image,
         "sameAs": [],
         "contactPoint": [{
           "@type": "ContactPoint",
-          "telephone": "+573115033959",
+          "telephone": "+525652467648",
           "contactType": "customer service"
         }]
       };

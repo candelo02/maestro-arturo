@@ -1,6 +1,7 @@
 
 import About from './components/About'
 import Benefits from './components/Benefits'
+import ChatTeaser from './components/ChatTeaser'
 import Footer from './components/Footer'
 import HeroCarousel from './components/HeroCarousel'
 import SEOHead from './components/layout/SEOHead'
@@ -23,6 +24,7 @@ export default function App() {
             <Services />
           </main>
           <Footer />
+          <ChatTeaser />
         </div>
       </NavigationProvider>
     </ThemeProvider>

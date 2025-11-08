@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { buildWhatsAppLink } from '../utils/helpers'
 
 const slides = [
   {
     image: '/images/proteccion-espiritual.jpg',
     title: 'Protección Espiritual a tu Medida',
-    text: 'Protege tu energía y atrae vibraciones positivas con rituales personalizados del Maestro Arturo.'
+    text: 'Protege tu energía y atrae vibraciones positivas con rituales personalizados del Maestro Valerio.'
   },
   {
     image: '/images/limpieza-energetica.jpg',
@@ -34,7 +35,7 @@ export default function HeroCarousel(){
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">{s.title}</h2>
             <p className="max-w-xl text-gray-200 mb-6">{s.text}</p>
-            <a href="https://wa.me/573115033959" target="_blank" rel="noreferrer" className="bg-orange-500 text-black px-6 py-3 rounded-md hover:bg-orange-600 transition font-semibold">
+            <a href={buildWhatsAppLink('Hola Maestro Valerio, vi su sitio y quiero más información sobre sus ceremonias y limpiezas.')} target="_blank" rel="noreferrer" className="bg-orange-500 text-black px-6 py-3 rounded-md hover:bg-orange-600 transition font-semibold">
               Contáctame 🔮
             </a>
           </div>
