@@ -1,4 +1,5 @@
 import { useTheme } from '../context/ThemeContext';
+import { buildWhatsAppLink } from '../utils/helpers';
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -7,7 +8,7 @@ export default function Navbar() {
     <nav className="flex justify-between items-center px-6 py-4 bg-[rgba(11,11,11,0.85)] dark:bg-[rgba(0,0,0,0.95)] fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
       <div className="flex items-center gap-4">
         <h1 className="text-2xl font-bold text-orange-500 tracking-wide">
-          Maestro <span className="text-white dark:text-gray-100">Arturo</span>
+          Maestro <span className="text-white dark:text-gray-100">Valerio</span>
         </h1>
         <button 
           onClick={toggleTheme}
@@ -24,7 +25,7 @@ export default function Navbar() {
         <li><a href="#servicios" className="hover:text-orange-400">Servicios</a></li>
       </ul>
       <a
-        href="https://wa.me/573115033959"
+        href={buildWhatsAppLink('Hola Maestro Valerio, me gustaría agendar una consulta. Mi nombre es ____.' )}
         target="_blank"
         rel="noreferrer"
         className="border border-orange-500 px-3 py-2 rounded-md hover:bg-orange-500 hover:text-black transition"
