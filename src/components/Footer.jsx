@@ -1,10 +1,12 @@
+import { buildWhatsAppLink } from '../utils/helpers'
+
 export default function Footer(){
   return (
     <footer className="py-8 bg-[rgba(0,0,0,0.8)] text-center text-gray-400 relative">
-      <p>© {new Date().getFullYear()} Maestro Arturo. Todos los derechos reservados.</p>
+      <p>© {new Date().getFullYear()} Maestro Valerio. Todos los derechos reservados.</p>
 
       <a
-        href="https://wa.me/573115033959"
+        href={buildWhatsAppLink('Hola Maestro Valerio, deseo conversar ahora mismo.')} 
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition"
